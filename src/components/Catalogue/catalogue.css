@@ -5,8 +5,9 @@
 
 .catalogue-filter-container{
     box-sizing: border-box;
-   background-color: red;
+   /* background-color: red; */
     width: 23%;
+
     padding: 20px;
     height: 85vh;
 position: fixed;
@@ -39,4 +40,70 @@ position: fixed;
         height: 0px;
         width: 0px;
     }
+}
+
+/* Filter container css */
+.filter-button-group-elevation{
+    width: fit-content;
+    display: block;
+    margin: auto;
+}
+.toggle-button-group{
+    
+    border: none !important;
+    outline: none !important;
+}
+.toggle-button{
+    box-sizing: border-box;
+    border: none !important;
+
+}
+
+
+.filter-store-category{
+display: block;
+ width: 191.31px;
+ margin: auto;
+text-align: left !important;
+ margin-top: 35px;
+}
+.store-category-heading{
+    font-size: 1.5rem;
+    color: rgb(0, 0, 39);
+}
+.store-category-button-group{
+    margin-top: 10px;
+}
+
+.store-category-button{
+text-align: left !important;
+border: none !important;
+padding: 3px 0px !important; 
+   
+}
+.store-category-button:hover{
+    background:none !important;
+}
+.store-category-button p{
+    height: 100%;
+    width: 100%;
+    text-transform: capitalize;
+    font-size: 1rem;
+    text-underline-position: under;
+}
+.store-category-button.Mui-selected{
+    background: none !important;
+    text-decoration: underline;
+
+}
+
+/* area filter */
+.filter-store-area{
+    display: block;
+        width: 191.31px;
+        margin: auto;
+        box-sizing: border-box;
+}
+.filter-store-area-form{
+    box-sizing: border-box !important;
 }

@@ -14,18 +14,18 @@ const HorizontalItem = (props) => {
     function handleDelete() {
         alert("delete");
     }
-
+    var open = "open";
 
 
     return (
-        <Paper elevation={1} className="component-elevation">
+        <Paper elevation={3} className="component-elevation">
             <div className="catalogue-vertical-component-left">
                 <Grid container>
                     <Grid item xs={7} md={7}>
 
                         <div className="catalogue-vertical-component">
                             <h3 className="store-name">Shop name</h3>
-                            <p className="store-status">Open</p>
+                            <p className={`store-status ${open}`}>Open</p>
                             <div className="store-type-location-container">
                                 <p className="store-data">Chemist Store</p>
                                 <p className="store-data">Location - Thane</p>
@@ -36,7 +36,7 @@ const HorizontalItem = (props) => {
                                         <DeleteIcon sx={{ fontSize: 20 }} className="delete-store-icon" />
                                     </IconButton>
                                 </Tooltip>
-                                <Tooltip title="Delete">
+                                <Tooltip title="Update">
                                     <IconButton sx={{ p: '8px' }} aria-label="search" onClick={handleDelete}>
                                         <UpdateIcon sx={{ fontSize: 20 }} className="update-store-icon" />
                                     </IconButton>
