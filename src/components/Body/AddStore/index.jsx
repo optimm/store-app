@@ -41,7 +41,7 @@ const AddStore = () => {
   const categoryData = ["all", "grocery", "butcher", "baker", "chemist", "stationery"];
   const areas = ["all", "pune", "thane", "mumbai suburban", "nashik", "nagpur", "ahmednagar"];
   return (
-    <>
+    <div className="main-container">
       <div className="add-store-container">
         <img src="./images/addstore.png" className="add-store-icon"></img>
         <p className="add-store-header">Add Store</p>
@@ -132,7 +132,7 @@ const AddStore = () => {
         </div>
 
       </div>
-    </>
+    </div>
   );
 };
 
