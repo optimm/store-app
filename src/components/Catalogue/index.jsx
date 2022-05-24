@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import { Link } from "react-router-dom";
 import { IconButton, SwipeableDrawer, ToggleButtonGroup, ToggleButton, Box, InputBase, Paper, Grid, Button, InputLabel, FormControl, Select, MenuItem } from "@mui/material";
 import HorizontalItem from "./StoreItem/horizontal";
 
@@ -35,9 +36,7 @@ const Catalogue = () => {
     setOpen(true);
   }
   function bello() {
-    alert(status);
-    alert(category);
-    alert(area);
+    setCategory('all');
   }
 
   //menu arrays
@@ -49,7 +48,7 @@ const Catalogue = () => {
       {/* main container */}
       <div className="catalogue-container">
         <Grid container spacing={1}>
-          {/* left filter container */}
+          {/* ***********************left filter container******************** */}
           <Grid item md={3} className="main-left">
             <div className="catalogue-filter-container">
               <Paper className="filter-button-group-elevation">
@@ -66,7 +65,7 @@ const Catalogue = () => {
                   {/* <button onClick={hello}>click</button> */}
                 </ToggleButtonGroup>
               </Paper>
-              {/* category filter */}
+              {/* *****category filter***** */}
               <div className="filter-store-category">
                 <p className="store-category-heading">Category</p>
                 <ToggleButtonGroup
@@ -98,6 +97,8 @@ const Catalogue = () => {
               </div>
             </div>
           </Grid>
+
+          {/* ******************************** items main right container********************** */}
           <Grid item xs={12} md={9}>
             <div className="catalogue-items-container">
 
@@ -107,7 +108,8 @@ const Catalogue = () => {
                   <div className="catalogue-search-bar">
                     <Paper
                       component="form"
-                      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+                      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
+                      className="search-bar-paper"
                     >
                       <InputBase
                         sx={{ ml: 1, flex: 1 }}
@@ -120,26 +122,31 @@ const Catalogue = () => {
                     </Paper>
                   </div>
                 </Grid>
+                {/* add store and filters buttons */}
                 <Grid item md={3}>
                   <div className="catalogue-add-store-container">
-                    <Button variant="contained" size="large" endIcon={<AddBusinessIcon />} className="add-store-button">
-                      Add Store
-                    </Button>
+                    <Link to="/addstore" style={{ textDecoration: 'none' }}>
+                      <Button variant="contained" size="large" endIcon={<AddBusinessIcon />} className="add-store-button" onClick={bello}>
+                        Add Store
+                      </Button>
+                    </Link>
                   </div>
                 </Grid>
                 <div className="small-screen-add-store-container">
                   <Button variant="contained" size="medium" color="secondary" endIcon={<FilterAltIcon />} className="add-store-button filter-button" onClick={hello}>
                     Filters
                   </Button>
-                  <Button variant="contained" size="medium" endIcon={<AddBusinessIcon />} className="add-store-button" onClick={bello}>
-                    Add Store
-                  </Button>
+                  <Link to="/addstore" style={{ textDecoration: 'none' }}>
+                    <Button variant="contained" size="medium" endIcon={<AddBusinessIcon />} className="add-store-button" onClick={bello}>
+                      Add Store
+                    </Button>
+                  </Link>
 
 
                 </div>
               </Grid>
 
-              {/* all stores  */}
+              {/*******all stores*********/}
               <div className="catalogue-item-list">
                 <Box sx={{ flexGrow: 1 }}>
                   <Grid container spacing={{ xs: 2, md: 2 }}>
@@ -157,7 +164,7 @@ const Catalogue = () => {
 
         </Grid >
       </div >
-
+      {/************************* drawer *******************************************/}
       <SwipeableDrawer anchor="bottom" open={open} onClose={() => setOpen(false)} className="drawer-menu" >
         <div className="drawer-store-status">
           <Paper className="filter-button-group-elevation">

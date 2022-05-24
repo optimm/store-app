@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./nav.css";
 import { Link } from "react-router-dom";
 
@@ -10,11 +10,11 @@ const Navbar = () => {
         <h1 className="nav-logo">Fyntune</h1>
         <div className="nav-links">
           <Link
-            to="/catalogue"
+            to="/"
             style={{ color: "white", padding: 0 }}
             className="nav-navigator"
           >
-            <p className="nav-item">Stores</p>
+            <p className="nav-item">Home</p>
           </Link>
 
           <Link
@@ -22,7 +22,7 @@ const Navbar = () => {
             style={{ color: "white", padding: 0 }}
             className="nav-navigator"
           >
-            <p className="nav-item about">About</p>
+            <p className="nav-item about">Stores</p>
           </Link>
         </div>
       </div>

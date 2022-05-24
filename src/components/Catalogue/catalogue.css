@@ -26,6 +26,9 @@
   margin: auto;
   padding-top: 20px;
 }
+.search-bar-paper{
+  width: 400px;
+}
 
 .catalogue-item-list {
   margin-top: 20px;
@@ -45,6 +48,17 @@
 .small-screen-add-store-container{
 
     display: none;
+}
+
+@media screen and (max-width: 600px) {
+.search-bar-paper {
+    width: 320px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .search-bar-paper {
+    width: 290px;
+  }
 }
 
 
@@ -146,8 +160,6 @@
   margin-top: 10px;
 }
 /* drawer for small screen for filter */
-.drawer-menu {
-}
 
 .drawer-store-status {
   margin-top: 20px;
