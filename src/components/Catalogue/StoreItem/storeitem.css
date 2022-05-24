@@ -1,0 +1,57 @@
+.catalogue-vertical-component {
+    width: 100%;
+    padding: 25px 10px;
+}
+
+.component-elevation {
+    width: 95%;
+ height: 200px;
+}
+
+.store-name{
+    font-size: 1.2rem;
+    color: rgb(92, 92, 92);
+    text-align: left;
+    padding-left: 10px;
+}
+.store-status{
+    font-size: 1rem;
+    color: green;
+    text-align: left;
+    padding-left: 10px;
+}
+.store-type-location-container {
+    margin-top: 25px;
+}
+.store-data{
+    font-size: 0.9rem;
+    color: rgb(114, 114, 114);
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.store-image{
+width: 60%;
+display: block;
+margin: auto;
+position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+margin-top: 10px;
+}
+.catalogue-vertical-component-right{
+height: 200px;
+    padding: 20px 0px;
+    text-align: right;
+background-color: rgb(250, 250, 250);
+}
+.store-icon-container{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 18px;
+}
+.delete-store-icon{
+    
+}
