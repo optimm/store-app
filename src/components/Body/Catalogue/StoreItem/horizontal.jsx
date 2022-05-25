@@ -7,14 +7,25 @@ import UpdateIcon from '@mui/icons-material/Update';
 import Tooltip from '@mui/material/Tooltip'
 
 import "./storeitem.css"
-import { pink } from "@mui/material/colors";
+
 
 const HorizontalItem = (props) => {
+    const { item } = props;
+    //todays date
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    today = yyyy + "-" + mm + "-" + dd;
 
     function handleDelete() {
         alert("delete");
     }
-    var open = "open";
+    var open = "Open";
+    if (item.Closedate < today || item.openDate > today) {
+        open = "Closed";
+    }
 
 
     return (
@@ -24,11 +35,11 @@ const HorizontalItem = (props) => {
                     <Grid item xs={7} md={7}>
 
                         <div className="catalogue-vertical-component">
-                            <h3 className="store-name">Shop name</h3>
-                            <p className={`store-status ${open}`}>Open</p>
+                            <h3 className="store-name">{item.name}</h3>
+                            <p className={`store-status ${open}`}>{open}</p>
                             <div className="store-type-location-container">
-                                <p className="store-data">Chemist Store</p>
-                                <p className="store-data">Location - Thane</p>
+                                <p className="store-data">{item.category} Shop</p>
+                                <p className="store-data">Location - {item.area}</p>
                             </div>
                             <div className="store-icon-container">
                                 <Tooltip title="Delete">

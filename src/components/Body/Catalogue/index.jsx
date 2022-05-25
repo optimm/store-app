@@ -5,23 +5,46 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Link } from "react-router-dom";
 import { IconButton, SwipeableDrawer, ToggleButtonGroup, ToggleButton, Box, InputBase, Paper, Grid, Button, InputLabel, FormControl, Select, MenuItem } from "@mui/material";
 import HorizontalItem from "./StoreItem/horizontal";
+import { useSelector } from "react-redux";
 
 import './catalogue.css';
 
 const Catalogue = () => {
+  //todays date
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var yyyy = today.getFullYear();
+  today = yyyy + "-" + mm + "-" + dd;
+  const data = [{ date: "2022-05-24" }, { date: "2022-05-25" }, { date: "2022-05-25" }, { date: "2022-05-25" }, { date: "2022-05-23" }];
+
+
+  const items = useSelector((state) => state.stores);
+
 
   //states
   const [value, setValue] = useState("")
   const [category, setCategory] = useState('all');
   const [area, setArea] = useState('all');
   const [open, setOpen] = useState(false);
+  const [displayData, setDisplayData] = useState(items);
+
+
 
   //handling  click functions
-  const handleChangeCategory = (event, nextView) => {
-    setCategory(nextView);
+  const handleChangeCategory = (event, newCat) => {
+    setCategory(newCat);
+    if (newCat === "all") {
+      setDisplayData(items);
+    }
+    const updatedItems = items.filter((currItem) => {
+      return currItem.category === newCat;
+    }
+    )
+    setDisplayData(updatedItems);
   };
   const handleSearch = (event, newValue) => {
-    alert(value);
+    alert(items.length);
     setValue("");
   }
   const [status, setStatus] = React.useState('all');
@@ -43,7 +66,7 @@ const Catalogue = () => {
   }
 
   //menu arrays
-  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
   const categoryData = ['all', 'grocery', 'butcher', 'baker', 'chemist', 'stationery']
   const areas = ['all', 'pune', 'thane', 'mumbai suburban', 'nashik', 'nagpur', 'ahmednagar']
   return (
@@ -159,9 +182,9 @@ const Catalogue = () => {
               <div className="catalogue-item-list">
                 <Box sx={{ flexGrow: 1 }}>
                   <Grid container spacing={{ xs: 2, md: 2 }}>
-                    {data.map((_, index) => (
+                    {displayData.map((item, index) => (
                       <Grid item xs={12} sm={6} md={6} lg={6} key={index}>
-                        <HorizontalItem />
+                        <HorizontalItem item={item} />
                       </Grid>
                     ))}
                   </Grid>

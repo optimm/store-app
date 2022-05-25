@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Button, FormControl, FormHelperText, Grid, InputLabel, MenuItem, Paper, Select, TextField, } from "@mui/material";
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
+import { add } from "../../../features/storesSlice";
+import { useDispatch, useSelector } from "react-redux";
 import "./addstore.css";
 
 const AddStore = () => {
 
+  const dispatch = useDispatch();
   //todays date
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -24,7 +27,18 @@ const AddStore = () => {
   const [notdate, setNotdate] = useState(false);
 
 
-
+  function handleAdd() {
+    const data = { name, area, category, openDate, closeDate };
+    dispatch(add(data));
+    clearAll();
+  }
+  function clearAll() {
+    setCategory("");
+    setArea("");
+    setName("");
+    setOpenDate(today);
+    setCloseDate(today);
+  }
 
   //validators
   function validation() {
@@ -50,14 +64,7 @@ const AddStore = () => {
       return;
     }
 
-    // all fine so call function to add now 
-
-    //clearing
-    // setCategory("");
-    // setArea("");
-    // setName("");
-    // alert(today);
-
+    handleAdd();
   }
 
   function nameSetter(e) {
@@ -109,7 +116,8 @@ const AddStore = () => {
         <div className="add-store-inputs">
           <Grid container spacing={1} className="add-store-input-container">
             <Grid item xs={12} className="add-store-alpha-inputs">
-              <TextField id="" label="Store Name*" variant="outlined" fullWidth onChange={(e) => { nameSetter(e) }} error={notname} helperText={notname ? "required, only alphabets" : ""} />
+              <TextField id="" label="Store Name*" variant="outlined" fullWidth
+                value={name} onChange={(e) => { nameSetter(e) }} error={notname} helperText={notname ? "required, only alphabets" : ""} />
             </Grid>
             <Grid item xs={12} sm={12} md={6} className="add-store-alpha-inputs">
               <FormControl fullWidth className="drawer-dropdown-content" error={notcat} >
