@@ -262,7 +262,7 @@ const Catalogue = () => {
 
                   >
                     {categoryData.map((item, index) => (
-                      <MenuItem value={item} style={{ textTransform: "capitalize" }}>{item}</MenuItem>
+                      <MenuItem value={item} style={{ textTransform: "capitalize" }} key={index}>{item}</MenuItem>
                     ))}
                   </Select>
                 </FormControl>
@@ -282,7 +282,7 @@ const Catalogue = () => {
 
                   >
                     {areas.map((item, index) => (
-                      <MenuItem value={item} style={{ textTransform: "capitalize" }}>{item}</MenuItem>
+                      <MenuItem value={item} style={{ textTransform: "capitalize" }} key={index}>{item}</MenuItem>
                     ))}
                   </Select>
                 </FormControl>

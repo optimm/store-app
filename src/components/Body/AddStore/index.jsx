@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createNotification } from "../../../Notification";
 import "./addstore.css";
 
-const AddStore = (props) => {
+const AddStore = () => {
 
   const dispatch = useDispatch();
   //todays date
@@ -119,7 +119,7 @@ const AddStore = (props) => {
     <div className="main-container">
       <div className="add-store-container">
         <img src="./images/addstore.png" className="add-store-icon"></img>
-        <p className="add-store-header">{props.name}</p>
+        <p className="add-store-header">Add store</p>
         <div className="add-store-inputs">
           <Grid container spacing={1} className="add-store-input-container">
             <Grid item xs={12} className="add-store-alpha-inputs">
