@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+// reducers
 const initialState = {
   stores: [
     {
       id: 1,
-      name: "gayatri",
+      name: "Aakash General Store",
       area: "pune",
       category: "chemist",
       openDate: "2022-05-12",
@@ -11,7 +12,7 @@ const initialState = {
     },
     {
       id: 2,
-      name: "ayush ki",
+      name: "Vinod Medical Store",
       area: "pune",
       category: "chemist",
       openDate: "2022-05-12",

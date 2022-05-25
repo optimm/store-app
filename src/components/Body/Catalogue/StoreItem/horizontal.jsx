@@ -94,7 +94,6 @@ const HorizontalItem = (props) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                {/* <h1 style={{ fontSize: "20px" }}>hello</h1> */}
                 <UpdateStore item={item} />
 
             </Modal>

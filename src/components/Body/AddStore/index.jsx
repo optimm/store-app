@@ -17,6 +17,7 @@ const AddStore = () => {
 
   today = yyyy + "-" + mm + "-" + dd;
 
+  //states
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [area, setArea] = useState("");
@@ -28,7 +29,7 @@ const AddStore = () => {
   const [notdate, setNotdate] = useState(false);
 
 
-  function handleAdd() {
+  function handleUpdate() {
     const data = { name, area, category, openDate, closeDate };
     dispatch(add(data));
     createNotification("Store Added Successfully", "success", 3000);
@@ -71,7 +72,7 @@ const AddStore = () => {
       return;
     }
 
-    handleAdd();
+    handleUpdate();
   }
 
   function nameSetter(e) {
