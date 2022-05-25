@@ -1,4 +1,3 @@
-
 .navbar-container{
     height: 65px;
     background-color: #ececec;
@@ -9,8 +8,7 @@
     flex-direction: row;
     justify-content:space-between;
     color: rgb(240, 240, 240);
-    margin-bottom: 10px;
-    
+
 }
 .nav-logo{
 font-size: 1.5rem;

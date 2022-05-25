@@ -29,6 +29,10 @@ const HorizontalItem = (props) => {
     if (item.closeDate < today || item.openDate > today) {
         open = "Closed";
     }
+    //setting url for image based on category
+    let categ = item.category;
+    categ = categ.trim();
+    const image = `./images/${categ}.png`;
 
 
     return (
@@ -63,7 +67,7 @@ const HorizontalItem = (props) => {
                     </Grid>
                     <Grid item xs={5} md={5}>
                         <div className="catalogue-vertical-component-right">
-                            <img src="./images/groceries.png" className="store-image" />
+                            <img src={image} className="store-image" />
                         </div>
                     </Grid>
 

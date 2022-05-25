@@ -1,6 +1,7 @@
 .catalogue-container {
   box-sizing: border-box;
   height: 90vh;
+  margin-top: 10px;
 }
 
 .catalogue-filter-container {
