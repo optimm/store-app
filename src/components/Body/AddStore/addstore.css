@@ -16,12 +16,15 @@
 
 .add-store-icon {
     height: 80px;
+    display: block;
+    margin: auto;
 }
 
 .add-store-header {
     font-size: 1.5rem;
     font-weight: 600;
     color: rgb(114, 114, 114);
+    text-align: center;
 }
 
 .add-store-input-container {
@@ -38,9 +41,11 @@
     margin-top: 15px !important;
 }
 
-.add-store-button {
+.add-store-button-new-page{
+    width: fit-content;
+    display: block;
+    margin: auto;
     margin-top: 40px;
-
 }
 
 @media screen and (max-width: 899px) {

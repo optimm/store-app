@@ -5,11 +5,14 @@ import { IconButton } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
 import Tooltip from '@mui/material/Tooltip'
+import { remove } from '../../../../features/storesSlice';
 
+import { useDispatch } from "react-redux";
 import "./storeitem.css"
 
 
 const HorizontalItem = (props) => {
+    const dispatch = useDispatch();
     const { item } = props;
     //todays date
     var today = new Date();
@@ -19,11 +22,11 @@ const HorizontalItem = (props) => {
 
     today = yyyy + "-" + mm + "-" + dd;
 
-    function handleDelete() {
-        alert("delete");
+    function handleDelete(id) {
+        dispatch(remove(id));
     }
     var open = "Open";
-    if (item.Closedate < today || item.openDate > today) {
+    if (item.closeDate < today || item.openDate > today) {
         open = "Closed";
     }
 
@@ -43,7 +46,7 @@ const HorizontalItem = (props) => {
                             </div>
                             <div className="store-icon-container">
                                 <Tooltip title="Delete">
-                                    <IconButton sx={{ p: '8px' }} aria-label="search" onClick={handleDelete}>
+                                    <IconButton sx={{ p: '8px' }} aria-label="search" onClick={() => handleDelete(item.id)}>
                                         <DeleteIcon sx={{ fontSize: 20 }} className="delete-store-icon" />
                                     </IconButton>
                                 </Tooltip>

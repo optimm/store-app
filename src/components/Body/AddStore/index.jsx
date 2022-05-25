@@ -30,6 +30,7 @@ const AddStore = () => {
   function handleAdd() {
     const data = { name, area, category, openDate, closeDate };
     dispatch(add(data));
+    alert("Store was Added ");
     clearAll();
   }
   function clearAll() {
@@ -38,6 +39,11 @@ const AddStore = () => {
     setName("");
     setOpenDate(today);
     setCloseDate(today);
+    setNotdate(false);
+    setNotname(false);
+    setNotarea(false);
+    setNotcat(false);
+
   }
 
   //validators
@@ -172,7 +178,7 @@ const AddStore = () => {
                 id="date"
                 label="Open Date"
                 type="date"
-                defaultValue={today}
+                value={openDate}
                 fullWidth
                 InputLabelProps={{
                   shrink: true,
@@ -187,7 +193,7 @@ const AddStore = () => {
                 type="date"
                 error={notdate}
                 helperText={notdate ? "cannot be before opening date" : ""}
-                defaultValue={today}
+                value={closeDate}
                 fullWidth
                 InputLabelProps={{
                   shrink: true,
@@ -196,8 +202,8 @@ const AddStore = () => {
               />
             </Grid>
           </Grid>
-          <div className="add-store-button">
-            <Button variant="contained" size="large" color="secondary" endIcon={<AddBusinessIcon />} className="add-store-button" onClick={validation}>
+          <div className="add-store-button-new-page">
+            <Button variant="contained" size="large" color="secondary" endIcon={<AddBusinessIcon />} onClick={validation}>
               Add Store
             </Button>
           </div>

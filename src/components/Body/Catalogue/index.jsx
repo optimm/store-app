@@ -19,7 +19,7 @@ const Catalogue = () => {
   const data = [{ date: "2022-05-24" }, { date: "2022-05-25" }, { date: "2022-05-25" }, { date: "2022-05-25" }, { date: "2022-05-23" }];
 
 
-  const items = useSelector((state) => state.stores);
+  const { stores } = useSelector((state) => state.stores);
 
 
   //states
@@ -27,27 +27,44 @@ const Catalogue = () => {
   const [category, setCategory] = useState('all');
   const [area, setArea] = useState('all');
   const [open, setOpen] = useState(false);
-  const [displayData, setDisplayData] = useState(items);
+  const [displayData, setDisplayData] = useState(stores);
+  const [status, setStatus] = useState('all');
 
 
+  //filters
+  useEffect(() => {
+    let data = stores;
+    if (category != 'all') {
+      data = data.filter((item) => {
+        return item.category === category;
+      })
+    }
+    if (area != 'all') {
+      data = data.filter((item) => {
+        return item.area === area;
+      })
+    }
+    if (status != 'all') {
+      data = data.filter((item) => {
+        if (status === 'open') return (item.openDate <= today && item.closeDate >= today);
+        else return (item.openDate > today || item.closeDate < today);
+      })
+    }
+    setDisplayData([...data]);
+  }, [stores, category, area, status])
 
-  //handling  click functions
+
   const handleChangeCategory = (event, newCat) => {
     setCategory(newCat);
-    if (newCat === "all") {
-      setDisplayData(items);
-    }
-    const updatedItems = items.filter((currItem) => {
-      return currItem.category === newCat;
-    }
-    )
-    setDisplayData(updatedItems);
   };
+
+
+
   const handleSearch = (event, newValue) => {
-    alert(items.length);
+    alert(stores.length);
     setValue("");
   }
-  const [status, setStatus] = React.useState('all');
+
 
   const handleChangeStatus = (event, newStatus) => {
     setStatus(newStatus);
@@ -64,6 +81,9 @@ const Catalogue = () => {
     setStatus('all');
     setArea('all');
   }
+
+
+
 
   //menu arrays
 
@@ -122,7 +142,7 @@ const Catalogue = () => {
                 </Paper>
               </div>
               <div className="clear-filters-button">
-                <Button variant="contained" size="medium" color="error" className="add-store-button" onClick={clearFilters}>
+                <Button variant="contained" size="medium" color="error" onClick={clearFilters}>
                   Clear All
                 </Button>
               </div>

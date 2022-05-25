@@ -41,8 +41,6 @@
   padding-top: 20px;
 }
 .add-store-button {
-  display: block;
-  margin: auto;
   text-transform: capitalize !important;
 }
 .small-screen-add-store-container{
@@ -160,6 +158,9 @@
   margin-top: 10px;
 }
 .clear-filters-button{
+  width: fit-content;
+  display: block;
+  margin: auto;
   margin-top: 50px;
 }
 /* drawer for small screen for filter */
@@ -183,5 +184,8 @@
     text-transform: capitalize !important;
 }
 .drawer-clear-filter-button{
-  text-align: center;
+  /* width: fit-content; */
+  display: block;
+  margin: auto;
+ text-align: center;
 }
