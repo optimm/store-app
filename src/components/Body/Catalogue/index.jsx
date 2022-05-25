@@ -68,12 +68,7 @@ const Catalogue = () => {
 
 
 
-  // const handleSearch = (event, newValue) => {
-  //   let searchdata = stores;
-  //   // alert(value);
 
-  //   setDisplayData(searchdata);
-  // }
 
 
   const handleChangeStatus = (event, newStatus) => {
@@ -230,7 +225,7 @@ const Catalogue = () => {
         </Grid >
       </div >
       {/************************* drawer *******************************************/}
-      <SwipeableDrawer anchor="bottom" open={open} onClose={() => setOpen(false)} className="drawer-menu" >
+      <SwipeableDrawer anchor="bottom" open={open} onClose={() => setOpen(false)} className="drawer-menu" onOpen={() => setOpen(true)}>
         <div className="drawer-store-status">
           <Paper className="filter-button-group-elevation">
             <ToggleButtonGroup
