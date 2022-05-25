@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import { IconButton } from "@mui/material";
+import { Box, IconButton, Modal, Typography } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
 import Tooltip from '@mui/material/Tooltip'
 import { remove } from '../../../../features/storesSlice';
+import AddStore from "../../AddStore";
 
 import { useDispatch } from "react-redux";
 import "./storeitem.css"
-
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 
 const HorizontalItem = (props) => {
     const dispatch = useDispatch();
@@ -21,7 +32,9 @@ const HorizontalItem = (props) => {
     var yyyy = today.getFullYear();
 
     today = yyyy + "-" + mm + "-" + dd;
-
+    const [isopen, setisOpen] = useState(false);
+    const handleOpen = () => setisOpen(true);
+    const handleClose = () => setisOpen(false);
     function handleDelete(id) {
         dispatch(remove(id));
     }
@@ -36,44 +49,54 @@ const HorizontalItem = (props) => {
 
 
     return (
-        <Paper elevation={3} className="component-elevation">
-            <div className="catalogue-vertical-component-left">
-                <Grid container>
-                    <Grid item xs={7} md={7}>
+        <>
+            <Paper elevation={3} className="component-elevation">
+                <div className="catalogue-vertical-component-left">
+                    <Grid container>
+                        <Grid item xs={7} md={7}>
 
-                        <div className="catalogue-vertical-component">
-                            <h3 className="store-name">{item.name}</h3>
-                            <p className={`store-status ${open}`}>{open}</p>
-                            <div className="store-type-location-container">
-                                <p className="store-data">{item.category} Shop</p>
-                                <p className="store-data">Location - {item.area}</p>
+                            <div className="catalogue-vertical-component">
+                                <h3 className="store-name">{item.name}</h3>
+                                <p className={`store-status ${open}`}>{open}</p>
+                                <div className="store-type-location-container">
+                                    <p className="store-data">{item.category} Shop</p>
+                                    <p className="store-data">Location - {item.area}</p>
+                                </div>
+                                <div className="store-icon-container">
+                                    <Tooltip title="Delete">
+                                        <IconButton sx={{ p: '8px' }} aria-label="search" onClick={() => handleDelete(item.id)}>
+                                            <DeleteIcon sx={{ fontSize: 20 }} className="delete-store-icon" />
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Update">
+                                        <IconButton sx={{ p: '8px' }} aria-label="search" onClick={handleOpen}>
+                                            <UpdateIcon sx={{ fontSize: 20 }} className="update-store-icon" />
+                                        </IconButton>
+                                    </Tooltip>
+
+                                </div>
+
                             </div>
-                            <div className="store-icon-container">
-                                <Tooltip title="Delete">
-                                    <IconButton sx={{ p: '8px' }} aria-label="search" onClick={() => handleDelete(item.id)}>
-                                        <DeleteIcon sx={{ fontSize: 20 }} className="delete-store-icon" />
-                                    </IconButton>
-                                </Tooltip>
-                                <Tooltip title="Update">
-                                    <IconButton sx={{ p: '8px' }} aria-label="search" onClick={handleDelete}>
-                                        <UpdateIcon sx={{ fontSize: 20 }} className="update-store-icon" />
-                                    </IconButton>
-                                </Tooltip>
 
+                        </Grid>
+                        <Grid item xs={5} md={5}>
+                            <div className="catalogue-vertical-component-right">
+                                <img src={image} className="store-image" />
                             </div>
-
-                        </div>
+                        </Grid>
 
                     </Grid>
-                    <Grid item xs={5} md={5}>
-                        <div className="catalogue-vertical-component-right">
-                            <img src={image} className="store-image" />
-                        </div>
-                    </Grid>
-
-                </Grid>
-            </div>
-        </Paper>
+                </div>
+            </Paper>
+            <Modal
+                open={isopen}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <AddStore name={"Update Store"} item={props.item} />
+            </Modal>
+        </>
     );
 }
 

@@ -3,6 +3,7 @@ import Home from "./components/Body/Home";
 import Catalogue from "./components/Body/Catalogue";
 import Navbar from "./components/Header";
 import AddStore from "./components/Body/AddStore";
+import { Notification } from "./Notification";
 import "./App.css";
 
 
@@ -13,11 +14,12 @@ function App() {
         <Routes>
           <Route path="/" element={<><Navbar /><Home /></>} />
           <Route path="/catalogue" element={<><Navbar /><Catalogue /></>} />
-          <Route path="/addstore" element={<><Navbar /><AddStore /></>} />
+          <Route path="/addstore" element={<><Navbar /><AddStore name={"Add Store"} /></>} />
 
 
         </Routes>
       </BrowserRouter>
+      <Notification />
     </div>
   );
 }

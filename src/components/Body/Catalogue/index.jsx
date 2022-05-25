@@ -3,11 +3,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Link } from "react-router-dom";
-import { IconButton, SwipeableDrawer, ToggleButtonGroup, ToggleButton, Box, InputBase, Paper, Grid, Button, InputLabel, FormControl, Select, MenuItem } from "@mui/material";
+import { IconButton, SwipeableDrawer, ToggleButtonGroup, ToggleButton, Box, InputBase, Paper, Grid, Button, InputLabel, FormControl, Select, MenuItem, Modal, Typography } from "@mui/material";
 import HorizontalItem from "./StoreItem/horizontal";
 import { useSelector } from "react-redux";
 
+
 import './catalogue.css';
+
 
 const Catalogue = () => {
   //todays date
@@ -31,6 +33,7 @@ const Catalogue = () => {
   const [status, setStatus] = useState('all');
 
 
+
   //filters
   useEffect(() => {
     let data = stores;
@@ -50,8 +53,13 @@ const Catalogue = () => {
         else return (item.openDate > today || item.closeDate < today);
       })
     }
+    if (value != "") {
+      data = data.filter((item) => {
+        return (item.name.toLowerCase().includes(value.toLowerCase()) === true);
+      })
+    }
     setDisplayData([...data]);
-  }, [stores, category, area, status])
+  }, [value, stores, category, area, status])
 
 
   const handleChangeCategory = (event, newCat) => {
@@ -60,10 +68,12 @@ const Catalogue = () => {
 
 
 
-  const handleSearch = (event, newValue) => {
-    alert(stores.length);
-    setValue("");
-  }
+  // const handleSearch = (event, newValue) => {
+  //   let searchdata = stores;
+  //   // alert(value);
+
+  //   setDisplayData(searchdata);
+  // }
 
 
   const handleChangeStatus = (event, newStatus) => {
@@ -142,7 +152,10 @@ const Catalogue = () => {
                 </Paper>
               </div>
               <div className="clear-filters-button">
-                <Button variant="contained" size="medium" color="error" onClick={clearFilters}>
+                <Button variant="contained" size="medium" color="error"
+                  onClick={clearFilters}
+
+                >
                   Clear All
                 </Button>
               </div>
@@ -168,7 +181,7 @@ const Catalogue = () => {
                         value={value}
                         onChange={(e) => setValue(e.target.value)}
                       />
-                      <IconButton sx={{ p: '10px' }} aria-label="search" onClick={handleSearch}>
+                      <IconButton sx={{ p: '10px' }} aria-label="search" disabled>
                         <SearchIcon />
                       </IconButton>
                     </Paper>
@@ -277,13 +290,15 @@ const Catalogue = () => {
             </Grid>
           </Grid>
           <div className="clear-filters-button drawer-clear-filter-button">
-            <Button variant="contained" size="medium" color="error" className="add-store-button" onClick={clearFilters}>
+            <Button variant="contained" size="medium" color="error" onClick={clearFilters}>
               Clear All
             </Button>
           </div>
 
         </div>
       </SwipeableDrawer>
+      {/* **************************************** modal******************************** */}
+
 
     </>
   );

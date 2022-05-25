@@ -3,9 +3,10 @@ import { Button, FormControl, FormHelperText, Grid, InputLabel, MenuItem, Paper,
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import { add } from "../../../features/storesSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { createNotification } from "../../../Notification";
 import "./addstore.css";
 
-const AddStore = () => {
+const AddStore = (props) => {
 
   const dispatch = useDispatch();
   //todays date
@@ -30,7 +31,7 @@ const AddStore = () => {
   function handleAdd() {
     const data = { name, area, category, openDate, closeDate };
     dispatch(add(data));
-    alert("Store was Added ");
+    createNotification("Store Added Successfully", "success", 3000);
     clearAll();
   }
   function clearAll() {
@@ -50,7 +51,7 @@ const AddStore = () => {
   function validation() {
 
     // name validation
-    if (name === "" || /[^a-zA-Z]/.test(name)) {
+    if (name === "" || !/^[A-Za-z\s]*$/.test(name)) {
       setNotname(true);
       return;
     }
@@ -76,7 +77,7 @@ const AddStore = () => {
   function nameSetter(e) {
     const val = e.target.value;
     setName(val);
-    if (/[^a-zA-Z]/.test(val)) {
+    if (!/^[A-Za-z\s]*$/.test(val)) {
       setNotname(true);
     }
     else {
@@ -118,7 +119,7 @@ const AddStore = () => {
     <div className="main-container">
       <div className="add-store-container">
         <img src="./images/addstore.png" className="add-store-icon"></img>
-        <p className="add-store-header">Add Store</p>
+        <p className="add-store-header">{props.name}</p>
         <div className="add-store-inputs">
           <Grid container spacing={1} className="add-store-input-container">
             <Grid item xs={12} className="add-store-alpha-inputs">
