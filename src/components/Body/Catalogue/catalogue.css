@@ -159,6 +159,9 @@
   height: fit-content;
   margin-top: 10px;
 }
+.clear-filters-button{
+  margin-top: 50px;
+}
 /* drawer for small screen for filter */
 
 .drawer-store-status {
@@ -167,7 +170,6 @@
 }
 .drawer-dropdowns{
     margin-top: 50px;
-    display: flex;
     margin-bottom: 50px;
 }
 .drawer-dropdown-indv{
@@ -179,4 +181,7 @@
     outline: none !important;
     border: none !important;
     text-transform: capitalize !important;
+}
+.drawer-clear-filter-button{
+  text-align: center;
 }

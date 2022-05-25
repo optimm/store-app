@@ -22,6 +22,7 @@ const Catalogue = () => {
   };
   const handleSearch = (event, newValue) => {
     alert(value);
+    setValue("");
   }
   const [status, setStatus] = React.useState('all');
 
@@ -31,12 +32,14 @@ const Catalogue = () => {
 
 
 
-  function hello() {
-    // alert(area);
+  function openDrawer() {
     setOpen(true);
   }
-  function bello() {
+
+  function clearFilters() {
     setCategory('all');
+    setStatus('all');
+    setArea('all');
   }
 
   //menu arrays
@@ -62,7 +65,7 @@ const Catalogue = () => {
                   <ToggleButton className="toggle-button" variant="contained" value='all' color={"primary"}>All</ToggleButton>
                   <ToggleButton className="toggle-button" variant="contained" value="open" color={"success"}>Open</ToggleButton>
                   <ToggleButton className="toggle-button" variant="contained" value="close" color={"error"}>Closed</ToggleButton>
-                  {/* <button onClick={hello}>click</button> */}
+
                 </ToggleButtonGroup>
               </Paper>
               {/* *****category filter***** */}
@@ -86,7 +89,7 @@ const Catalogue = () => {
               <div className="filter-store-area">
                 <p className="store-category-heading">Area</p>
                 <Paper elevation={2} className="area-paper">
-                  <select className="filter-store-area-menu" onChange={(e) => { setArea(e.target.value) }}>
+                  <select className="filter-store-area-menu" value={area} onChange={(e) => { setArea(e.target.value) }}>
                     {
                       areas.map((item, index) => (
                         <option value={item} key={index} className="area-item">{item}</option>
@@ -94,6 +97,11 @@ const Catalogue = () => {
                     }
                   </select>
                 </Paper>
+              </div>
+              <div className="clear-filters-button">
+                <Button variant="contained" size="medium" color="error" className="add-store-button" onClick={clearFilters}>
+                  Clear All
+                </Button>
               </div>
             </div>
           </Grid>
@@ -114,6 +122,7 @@ const Catalogue = () => {
                       <InputBase
                         sx={{ ml: 1, flex: 1 }}
                         placeholder="Search Stores"
+                        value={value}
                         onChange={(e) => setValue(e.target.value)}
                       />
                       <IconButton sx={{ p: '10px' }} aria-label="search" onClick={handleSearch}>
@@ -126,18 +135,18 @@ const Catalogue = () => {
                 <Grid item md={3}>
                   <div className="catalogue-add-store-container">
                     <Link to="/addstore" style={{ textDecoration: 'none' }}>
-                      <Button variant="contained" size="large" endIcon={<AddBusinessIcon />} className="add-store-button" onClick={bello}>
+                      <Button variant="contained" size="large" endIcon={<AddBusinessIcon />} className="add-store-button" >
                         Add Store
                       </Button>
                     </Link>
                   </div>
                 </Grid>
                 <div className="small-screen-add-store-container">
-                  <Button variant="contained" size="medium" color="secondary" endIcon={<FilterAltIcon />} className="add-store-button filter-button" onClick={hello}>
+                  <Button variant="contained" size="medium" color="secondary" endIcon={<FilterAltIcon />} className="add-store-button filter-button" onClick={openDrawer}>
                     Filters
                   </Button>
                   <Link to="/addstore" style={{ textDecoration: 'none' }}>
-                    <Button variant="contained" size="medium" endIcon={<AddBusinessIcon />} className="add-store-button" onClick={bello}>
+                    <Button variant="contained" size="medium" endIcon={<AddBusinessIcon />} className="add-store-button" >
                       Add Store
                     </Button>
                   </Link>
@@ -191,6 +200,7 @@ const Catalogue = () => {
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
+                    value={category}
                     onChange={(e) => { setCategory(e.target.value) }}
                     label="Category"
 
@@ -210,6 +220,7 @@ const Catalogue = () => {
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
+                    value={area}
                     onChange={(e) => { setArea(e.target.value) }}
                     label="Area"
 
@@ -222,6 +233,11 @@ const Catalogue = () => {
               </div>
             </Grid>
           </Grid>
+          <div className="clear-filters-button drawer-clear-filter-button">
+            <Button variant="contained" size="medium" color="error" className="add-store-button" onClick={clearFilters}>
+              Clear All
+            </Button>
+          </div>
 
         </div>
       </SwipeableDrawer>
