@@ -57,7 +57,7 @@ const Catalogue = () => {
     }
     if (value !== "") {
       data = data.filter((item) => {
-        return (item.name.toLowerCase().includes(value.toLowerCase()) === true);
+        return ((item.name.toLowerCase().includes(value.toLowerCase())) || (item.area.toLowerCase().includes(value.toLowerCase())) || (item.category.toLowerCase().includes(value.toLowerCase())));
       })
     }
     setDisplayData([...data]);
