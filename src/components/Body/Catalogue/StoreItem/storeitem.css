@@ -57,7 +57,7 @@
 }
 
 .catalogue-vertical-component-right {
-    height: 200px;
+    height: 100%;
     padding: 20px 0px;
     text-align: right;
     background-color: rgb(250, 250, 250);
@@ -79,4 +79,11 @@
 
 .update-store-icon {
     color: rgb(150, 150, 150);
+}
+
+@media screen and (max-width:599px) {
+    .component-elevation {
+        display: block;
+        margin: auto;
+    }
 }

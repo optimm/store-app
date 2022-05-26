@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
 import Tooltip from '@mui/material/Tooltip'
 import { remove } from '../../../../features/storesSlice';
-import UpdateStore from "../../Updatestore";
+import AddUpdateStore from "../../Add-Update";
 
 import { useDispatch } from "react-redux";
 import "./storeitem.css"
@@ -94,7 +94,8 @@ const HorizontalItem = (props) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <UpdateStore item={item} />
+                {/* <div style={{ backgroundColor: "red" }}></div> */}
+                <AddUpdateStore name="Update Store" item={item} />
 
             </Modal>
         </>
