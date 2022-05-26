@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar-container">
-        <h1 className="nav-logo">Fyntune</h1>
+        <h1 className="nav-logo">Findit</h1>
         <div className="nav-links">
           <Link
             to="/"

@@ -3,7 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Link } from "react-router-dom";
-import { IconButton, SwipeableDrawer, ToggleButtonGroup, ToggleButton, Box, InputBase, Paper, Grid, Button, InputLabel, FormControl, Select, MenuItem, Modal, Typography } from "@mui/material";
+import { IconButton, SwipeableDrawer, ToggleButtonGroup, ToggleButton, Box, InputBase, Paper, Grid, Button, InputLabel, FormControl, Select, MenuItem } from "@mui/material";
 import HorizontalItem from "./StoreItem/horizontal";
 import { useSelector } from "react-redux";
 
@@ -13,12 +13,8 @@ import './catalogue.css';
 
 const Catalogue = () => {
   //todays date
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0');
-  var yyyy = today.getFullYear();
-  today = yyyy + "-" + mm + "-" + dd;
-  const data = [{ date: "2022-05-24" }, { date: "2022-05-25" }, { date: "2022-05-25" }, { date: "2022-05-25" }, { date: "2022-05-23" }];
+
+
 
 
   const { stores } = useSelector((state) => state.stores);
@@ -36,26 +32,32 @@ const Catalogue = () => {
 
   //filters
   useEffect(() => {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    today = yyyy + "-" + mm + "-" + dd;
+
     let data = stores;
-    if (category != 'all') {
+    if (category !== 'all') {
       data = data.filter((item) => {
         return item.category === category;
       })
     }
-    if (area != 'all') {
+    if (area !== 'all') {
       data = data.filter((item) => {
         return item.area === area;
       })
     }
-    if (status != 'all') {
+    if (status !== 'all') {
       data = data.filter((item) => {
         if (status === 'open') return (item.openDate <= today && item.closeDate >= today);
         else return (item.openDate > today || item.closeDate < today);
       })
     }
-    if (value != "") {
+    if (value !== "") {
       data = data.filter((item) => {
-        return (item.name.toLowerCase().includes(value.toLowerCase()) === true);
+        return ((item.name.toLowerCase().includes(value.toLowerCase())) || (item.area.toLowerCase().includes(value.toLowerCase())) || (item.category.toLowerCase().includes(value.toLowerCase())));
       })
     }
     setDisplayData([...data]);
@@ -292,7 +294,6 @@ const Catalogue = () => {
 
         </div>
       </SwipeableDrawer>
-      {/* **************************************** modal******************************** */}
 
 
     </>

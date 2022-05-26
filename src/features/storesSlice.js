@@ -1,23 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import data from "../initialData/data";
+// reducers
 const initialState = {
-  stores: [
-    {
-      id: 1,
-      name: "gayatri",
-      area: "pune",
-      category: "chemist",
-      openDate: "2022-05-12",
-      closeDate: "2022-05-30",
-    },
-    {
-      id: 2,
-      name: "ayush ki",
-      area: "pune",
-      category: "chemist",
-      openDate: "2022-05-12",
-      closeDate: "2022-05-15",
-    },
-  ],
+  stores: data,
 };
 
 const storesSlice = createSlice({
