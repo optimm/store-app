@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Button, FormControl, FormHelperText, Grid, InputLabel, MenuItem, Paper, Select, TextField, } from "@mui/material";
+import React, { useState } from "react";
+import { Button, FormControl, FormHelperText, Grid, InputLabel, MenuItem, Select, TextField, } from "@mui/material";
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import { add, update } from "../../../features/storesSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createNotification } from "../../../Notification";
 import "./addstore.css";
 
@@ -107,7 +107,7 @@ const AddUpdateStore = (props) => {
     function areaSetter(e) {
         const val = e.target.value;
         setArea(val);
-        if (val != "") { setNotarea(false) }
+        if (val !== "") { setNotarea(false) }
         else {
             setNotarea(true);
         }
@@ -115,7 +115,7 @@ const AddUpdateStore = (props) => {
     function catSetter(e) {
         const val = e.target.value;
         setCategory(val);
-        if (val != "") { setNotcat(false) }
+        if (val !== "") { setNotcat(false) }
         else {
             setNotcat(true);
         }
@@ -138,7 +138,7 @@ const AddUpdateStore = (props) => {
     return (
 
         <div className="add-store-container">
-            <img src="./images/addstore.png" className="add-store-icon"></img>
+            <img src="./images/addstore.png" className="add-store-icon" alt="add icon"></img>
             <p className="add-store-header">{props.name}</p>
             <div className="add-store-inputs">
                 <Grid container spacing={1} className="add-store-input-container">

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import { Box, IconButton, Modal, Typography } from "@mui/material";
+import { IconButton, Modal } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
 import Tooltip from '@mui/material/Tooltip'
@@ -10,17 +10,7 @@ import AddUpdateStore from "../../Add-Update";
 
 import { useDispatch } from "react-redux";
 import "./storeitem.css"
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
+
 
 const HorizontalItem = (props) => {
     const dispatch = useDispatch();
@@ -81,7 +71,7 @@ const HorizontalItem = (props) => {
                         </Grid>
                         <Grid item xs={5} md={5}>
                             <div className="catalogue-vertical-component-right">
-                                <img src={image} className="store-image" />
+                                <img src={image} className="store-image" alt="store" />
                             </div>
                         </Grid>
 

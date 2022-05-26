@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AddUpdateStore from "../Add-Update";
 import "../Add-Update/addstore.css"
 
