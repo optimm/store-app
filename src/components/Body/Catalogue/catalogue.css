@@ -39,6 +39,14 @@
   padding: 20px;
 }
 
+.empty-icon {
+  position: absolute;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  height: 200px;
+}
+
 .catalogue-add-store-container {
   width: fit-content;
   display: block;
@@ -58,6 +66,10 @@
 @media screen and (max-width: 600px) {
   .search-bar-paper {
     width: 320px;
+  }
+
+  .empty-icon {
+    height: 170px;
   }
 }
 
@@ -87,6 +99,11 @@
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
+  }
+
+  .empty-icon {
+    top: 70%;
+    left: 47%;
   }
 }
 

@@ -218,9 +218,10 @@ const Catalogue = () => {
                       </Grid>
                     ))}
                   </Grid>
+
                 </Box>
               </div>
-
+              {displayData.length === 0 && <img src="https://media4.giphy.com/media/9fAh7MfgrslSjg1Jk4/giphy.gif?cid=ecf05e471fyzg9b1qa5t4qx2txzcao80f9yt0a5fa0mu6z8j&rid=giphy.gif&ct=s" alt="empty icon" className="empty-icon" />}
             </div>
           </Grid>
 
